@@ -99,7 +99,7 @@ export default {
                     }else{
                           ElMessage.success("登录成功");
                     localStorage.setItem("ms_username", param.username);
-                    router.push("/home");
+                    router.push("/");
                     }
                   
                 } else {

@@ -6,7 +6,9 @@
             <i v-if="!collapse" ><el-icon><expand/></el-icon></i>
             <i v-else class="el-icon-s-unfold"><el-icon><fold/></el-icon></i>
         </div>
-        <div class="logo">后台管理系统</div>
+        <div class="logo">
+              <BreadcrumdVue></BreadcrumdVue>
+        </div>
         </div>
         <div class="header-right">
             <div class="header-user-con">
@@ -15,7 +17,7 @@
                     <img src="../assets/img/img.jpg" />
                 </div>
                 <!-- 用户名下拉菜单 -->
-                <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+                <el-dropdown class="user-name" trigger="hover" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{username}}
                         <i class="el-icon-caret-bottom"></i>
@@ -36,11 +38,14 @@ import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import {	Edit,Expand,Fold	} from '@element-plus/icons-vue'
+import BreadcrumdVue from "./Breadcrumd/Breadcrumd.vue";
 export default {
     components:{
-        Edit,Expand,Fold
+        Edit,Expand,Fold,BreadcrumdVue
     },
-    setup() {
+    // props:['msg','school'],
+    // emits:['hello'],
+    setup(props,context) {
         const username = localStorage.getItem("ms_username");
 
         const store = useStore();
@@ -58,28 +63,32 @@ export default {
                 collapseChage();
             }
         });
+        
           // 关闭全部标签
-        const closeAll = () => {
-            store.commit("clearTags");
-            router.push("/");
-        };
+        // const closeAll = () => {
+        //     store.commit("clearTags");
+        //     router.push("/");
+        // };
         // 用户名下拉菜单选择事件
         const router = useRouter();
         const handleCommand = (command) => {
             if (command == "loginout") {
                 localStorage.removeItem("ms_username");
                 router.push("/login");
-                closeAll()
+                // closeAll()
             } else if (command == "user") {
                 router.push("/user");
             }
         };
-
+        function test(){
+            context.emit('hello','傻逼')
+        }
         return {
             username,
             collapse,
             collapseChage,
             handleCommand,
+            test
         };
     },
 };
@@ -91,7 +100,8 @@ export default {
     width: 100%;
     height: 60px;
     font-size: 22px;
-    color: #fff;
+    color: #000;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,7 +120,7 @@ export default {
 }
 .header .logo {
     float: left;
-    color: #fff;
+    color: #000;
 }
 .header-right {
     float: right;
@@ -161,7 +171,7 @@ export default {
     border-radius: 50%;
 }
 .el-dropdown-link {
-    color: #fff;
+    color: #000;
     cursor: pointer;
 }
 .el-dropdown-menu__item {

@@ -1,13 +1,14 @@
 import {createStore} from 'vuex'
+import cart from './modules/cart'
 // import persistedState from 'vuex-persistedstate'
 export default createStore({
     state: {
         tagsList: [
             {
-                icon: "el-icon-lx-home",
+                icon: "icon-yuyue",
                 name:"dashboard",
                 path:"/dashboard",
-                title: "系统首页",
+                title: "系统数据",
             }
         ],
         a:1,
@@ -83,7 +84,9 @@ export default createStore({
         }
     },
     actions: {},
-    modules: {},
+    modules: {
+        cart
+    },
     // plugins: [
     //     persistedState({ storage: window.sessionStorage })  //无痕浏览
     // ]

@@ -1,31 +1,41 @@
 import {createRouter, createWebHashHistory} from "vue-router";
-import Home from "../views/home.vue";
 import { ElMessage } from "element-plus";
 import store from "../store";
+import nprogress from 'nprogress'
 const routes = [
-    {
-        path: "/",
-        redirect: "/login",
-    },
     {
         path: "/login",
         name: "Login",
         meta: {
-            title: '系统首页'
+            title: '登录'
         },
         component: () => import ( /* webpackChunkName: "dashboard" */ "../views/login.vue")
     },
     {
-        path: "/home",
+        path: '/:catchAll(.*)',
+        name: '/404',
+        meta: {
+            title: '404页面',
+            keepAlive: true, // 组件需要缓存
+        },
+        component: () => import (/* webpackChunkName: "404" */ '../views/404.vue')
+      },
+    {
+        path: "/",
         name: "Home",
-        redirect:"/dashboard",
-        component: Home,
+        component: () => import ( /* webpackChunkName: "dashboard" */ "../views/home.vue"),
+        redirect: '/dashboard',
+        meta: {
+            title: '首页',
+            keepAlive: true, // 组件需要缓存
+        },
         children:[
             {
                 path: "/dashboard",
                 name: "Dashboard",
                 meta: {
-                    title: '系统首页'
+                    title: '系统数据',
+                    keepAlive: true, // 组件需要缓存
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/dashboard.vue")
             },
@@ -33,7 +43,8 @@ const routes = [
                 path: "/table",
                 name: "Table",
                 meta: {
-                    title: '系统首页'
+                    title: '表格',
+                    keepAlive: true, // 组件需要缓存
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/table.vue")
             },
@@ -41,51 +52,57 @@ const routes = [
                 path: "/tabs",
                 name: "Tabs",
                 meta: {
-                    title: '系统首页'
+                    title: '文件上传',
+                    keepAlive: true, // 组件需要缓存
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/tabs.vue")
-            }, {
+            }, 
+            {
                 path: "/donate",
                 name: "donate",
                 meta: {
-                    title: '鼓励作者'
+                    title: '鼓励作者',
+                    keepAlive: false
                 },
                 component: () => import ( /* webpackChunkName: "donate" */ "../views/Donate.vue")
-            }, {
+            },
+             {
                 path: "/permission",
                 name: "permission",
                 meta: {
                     title: '权限管理',
-                    permission: true
+                    keepAlive: true, // 组件需要缓存
                 },
                 component: () => import ( /* webpackChunkName: "permission" */ "../views/Permission.vue")
-            }, {
-                path: '/404',
-                name: '404',
+            }, 
+            {
+                icon: "icon-baobiao",
+                name: "7",
+                path: "/7",
                 meta: {
-                    title: '找不到页面'
+                    title: '错误处理',
+                    keepAlive: true, // 组件需要缓存
                 },
-                component: () => import (/* webpackChunkName: "404" */ '../views/404.vue')
-            }, {
-                path: '/403',
-                name: '403',
-                meta: {
-                    title: '没有权限'
-                },
-                component: () => import (/* webpackChunkName: "403" */ '../views/403.vue')
-            }, {
-                path: '/user',
-                name: 'user',
-                meta: {
-                    title: '个人中心'
-                },
-                component: () => import (/* webpackChunkName: "user" */ '../views/User.vue')
-            }
+                component: () => import (/* webpackChunkName: "404" */ '../views/404.vue'),
+                children:[
+                    {
+                        path: '/404',
+                        name: '404',
+                        meta: {
+                            title: '404页面',
+                            keepAlive: true, // 组件需要缓存
+                        },
+                        component: () => import (/* webpackChunkName: "404" */ '../views/404.vue')
+                    },
+                ]
+            },
+          
+           
            
         ]
     },
    
-];
+]
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -94,6 +111,8 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
+    //在路由跳转之前开启
+  nprogress.start()
     let tagsList = store.state.tagsList
         document.title = `${to.meta.title}`;
     console.log(to.path,to.meta.title,to.name);
@@ -118,4 +137,9 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+//路由后置钩子
+router.afterEach(()=>{
+    //路由跳转结束之后 进度条结束
+    nprogress.done()
+  })
 export default router;

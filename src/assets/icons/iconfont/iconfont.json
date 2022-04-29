@@ -1,0 +1,79 @@
+{
+  "id": "3356445",
+  "name": "vue3",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "28878505",
+      "name": "预约",
+      "font_class": "yuyue",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "29203074",
+      "name": "安全锁",
+      "font_class": "anquansuo",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "29203075",
+      "name": "报表下载",
+      "font_class": "baobiaoxiazai",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "29203076",
+      "name": "插旗",
+      "font_class": "chaqi",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "29203077",
+      "name": "报表",
+      "font_class": "baobiao",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "29203078",
+      "name": "打卡",
+      "font_class": "daka",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "29203079",
+      "name": "补卡",
+      "font_class": "buka",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "29203080",
+      "name": "出差申请",
+      "font_class": "chuchashenqing",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "29203081",
+      "name": "插座",
+      "font_class": "chazuo",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "29203082",
+      "name": "大雾",
+      "font_class": "dawu",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    }
+  ]
+}
