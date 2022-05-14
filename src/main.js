@@ -7,9 +7,11 @@ import ElementPlus from 'element-plus' //引入ElementPlus组件
 import 'element-plus/dist/index.css'  //引入element-plus样式
 import 'nprogress/nprogress.css'    //引入进度条样式
 import './mock/index'  //引入mock
+import vueEsign from 'vue-esign'
 
 const app = createApp(App)
 app.use(ElementPlus)
+app.use(vueEsign)
 app.use(store)
 app.use(router)
 app.mount('#app')

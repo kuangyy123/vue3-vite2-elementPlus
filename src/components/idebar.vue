@@ -112,6 +112,12 @@ export default {
         path: "/table",
         title: "基础表格",
       },
+        {
+        icon: "icon-baobiaoxiazai",
+        name: "Picture",
+        path: "/picture",
+        title: "图片预览",
+      },
       
       {
         icon: "icon-baobiaoxiazai",

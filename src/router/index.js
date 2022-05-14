@@ -2,6 +2,8 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import { ElMessage } from "element-plus";
 import store from "../store";
 import nprogress from 'nprogress'
+
+
 const routes = [
     {
         path: "/login",
@@ -47,6 +49,15 @@ const routes = [
                     keepAlive: true, // 组件需要缓存
                 },
                 component: () => import ( /* webpackChunkName: "dashboard" */ "../views/table.vue")
+            },
+            {
+                path: "/picture",
+                name: "Picture",
+                meta: {
+                    title: '图片预览',
+                    keepAlive: true, // 组件需要缓存
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "../views/signature.vue")
             },
             {
                 path: "/tabs",

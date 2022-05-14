@@ -103,7 +103,7 @@ export default {
     color: #000;
     background: #fff;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
 }
 .collapse-btn {
@@ -124,7 +124,7 @@ export default {
 }
 .header-right {
     float: right;
-    padding-right: 50px;
+    padding-right: 20px;
 }
 .header-user-con {
     display: flex;
@@ -171,7 +171,7 @@ export default {
     border-radius: 50%;
 }
 .el-dropdown-link {
-    color: #000;
+    color: rgb(245, 17, 36);
     cursor: pointer;
 }
 .el-dropdown-menu__item {

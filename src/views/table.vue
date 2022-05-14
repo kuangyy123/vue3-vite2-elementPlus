@@ -10,7 +10,6 @@
   </el-table>
 	<Pagination :pager="pager" @changeSize="handleSizeChange" @changeCurrent="handleCurrentChange"></Pagination>
   </div>
- 
 </template>
  
 <script>
